@@ -1,22 +1,30 @@
-/*The first class is an Employee parent class with the following properties and methods:
-name
-id
-email
-getName()
-getId()
-getEmail()
-getRole() // Returns 'Employee'
 
-The other three classes will extend Employee.
-In addition to Employee's properties and methods, Manager will also have:
+const getName = require('../lib/intern.js'); 
+test('checks if 10 is equal to 10', () => {
+  expect(getName(10, 10)).toBe(true);
+});
 
-officeNumber
-getRole() // Overridden to return Manager
-In addition to Employee's properties and methods, Engineer will also have:
-github // GitHub username
-getGithub()
-getRole() // Overridden to return Engineer*/
 
-//TODO: Use list + append code from module 9 to create employee prompt
+const getId = require('../lib/intern.js'); 
+test('checks if 10 is equal to 10', () => {
+  expect(getId(10, 10)).toBe(true);
+});
+
+
+const getEmail = require('../lib/intern.js'); 
+test('checks if 10 is equal to 10', () => {
+  expect(getEmail(10, 10)).toBe(true);
+});
+
+const getRole = require('../lib/intern.js'); // Overridden to return Manager
+test('checks if 10 is equal to 10', () => {
+  expect(getRole(10, 10)).toBe(true);
+});
+
+const officeNumber = require('../lib/intern.js'); 
+test('checks if 10 is equal to 10', () => {
+  expect(officeNumber(10, 10)).toBe(true);
+});
+
+ 
 //TODO: Pass test
-//TODO: Export code to new employee file
