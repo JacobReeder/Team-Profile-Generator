@@ -1,30 +1,15 @@
-
-const getName = require('../lib/intern.js'); 
-test('checks if 10 is equal to 10', () => {
-  expect(getName(10, 10)).toBe(true);
-});
+const Manager = require('../lib/Manager');
 
 
-const getId = require('../lib/intern.js'); 
-test('checks if 10 is equal to 10', () => {
-  expect(getId(10, 10)).toBe(true);
-});
+test ('Employee Profile: Manager', () => {
+  const employee = new Manager ('employee', 'id', 'email', 'role', 'officeNumber');
 
+  expect(employee.name).toBe("employee");
+  expect(employee.id).toBe('id');
+  expect(employee.email).toBe('email');
+  expect(employee.role).toBe('role');
+  expect(employee.officeNumber).toBe('officeNumber');
 
-const getEmail = require('../lib/intern.js'); 
-test('checks if 10 is equal to 10', () => {
-  expect(getEmail(10, 10)).toBe(true);
-});
-
-const getRole = require('../lib/intern.js'); // Overridden to return Manager
-test('checks if 10 is equal to 10', () => {
-  expect(getRole(10, 10)).toBe(true);
-});
-
-const officeNumber = require('../lib/intern.js'); 
-test('checks if 10 is equal to 10', () => {
-  expect(officeNumber(10, 10)).toBe(true);
-});
-
+})
  
-//TODO: Pass test
+
