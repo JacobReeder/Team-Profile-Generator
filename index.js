@@ -262,9 +262,9 @@ class runApp {
   addHtmlTemplate(cardManager, cardEngineer, cardIntern) {
 
     
-     const htmlgen = new HtmlGenerator()
+     const htmlgen = new htmlGen()
     
-     this.writeHtml(htmlgen.getHtml(cardManager, cardEngineer, cardIntern))
+     this.writeHtml(htmlgen.newHtml(cardManager, cardEngineer, cardIntern))
  }
 
  writeHtml(htmlTemplate) {
@@ -274,4 +274,4 @@ class runApp {
 
 
 }
-new RunApplication().getEmployee();
+new runApp().getEmployee();

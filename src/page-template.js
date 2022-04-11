@@ -122,7 +122,7 @@ class htmlGen {
 
 }
   
-  module.exports = htmlGen()
+  module.exports = new htmlGen()
   
   
 
