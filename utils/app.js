@@ -1,8 +1,10 @@
-/*const writeFile = fileContent => {
+const fs = require('fs');
+
+const writeFile = newHtml => {
    
   return new Promise ((resolve, reject) => {
       
-      fs.writeFile('./dist/Index.html', fileContent, err => {
+      fs.writeFile('./dist/index.html', newHtml, err => {
           if(err) {
               reject(err);
               return;
@@ -13,7 +15,9 @@
           });
       });
   });
-  };*/
+  }
+
+  module.exports = { writeFile };
   
   
 
