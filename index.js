@@ -36,8 +36,8 @@ class runApp {
   
   
          {   type: 'input',
-            name: 'title',
-            message: 'What is the managers name? (Required)',
+            name: 'name',
+            message: "What is the managers name? (Required)",
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -50,7 +50,7 @@ class runApp {
         {
            type: 'input',
            name: 'id',
-           message: 'What is the managers ID?(Required)', 
+           message: "What is the managers ID?(Required)", 
            validate: idInput => {
             if (idInput) {
                 return true;
@@ -64,7 +64,7 @@ class runApp {
         {
            type: 'input',
            name: 'email',
-           message: 'What is the manager email?(Required)', 
+           message: "What is the manager email?(Required)", 
            validate: emailInput => {
             if (emailInput) {
                 return true;
@@ -93,7 +93,7 @@ class runApp {
         .then(answers => {
 
             this.newManager = new Manager(answers);
-            this.manager.push(this.managerEmployee);
+            this.manager.push(this.newManager);
             this.getEmployeeTitle();
         });
 
@@ -106,7 +106,7 @@ class runApp {
      inquirer
       .prompt([
        {  
-        type: 'checkbox',
+        type: 'list',
         name: 'employeeType',
         message: 'Which employee would you like to add?',
         choices: ['Engineer', 'Intern',]
@@ -128,15 +128,14 @@ class runApp {
     
      if (this.employeeType === 'Intern') {
   
-           inquirer
-           .prompt([
+           inquirer.prompt([
   
             {
                 type: 'input',
                 name: 'name',
                 message: "What is intern name?",
-                validate: managersName => {
-                    if (managersName) {
+                validate: internName => {
+                    if (internName) {
                         return true;
                     } else {
                         return false;
@@ -147,7 +146,7 @@ class runApp {
             {
           type: 'input',
           name: 'id',
-          message: 'What is this Interns id?',
+          message: "What is this Interns id?",
           validate: managersName => {
               if(managersName) {
                   return true;
@@ -160,7 +159,7 @@ class runApp {
         {
         type: 'input',
         name: 'email',
-        message: 'What is this Interns email?',
+        message: "What is this Interns email?",
         validate: managersName => {
             if(managersName) {
                 return true;
@@ -171,7 +170,7 @@ class runApp {
       },
         { type: 'input',
         name: 'school',
-        message: 'What is this Interns school?',
+        message: "What is this Interns school?",
         validate: managersName => {
             if(managersName) {
                 return true;
@@ -187,6 +186,7 @@ class runApp {
        .then(answers => {
            this.newIntern = new Intern(answers);
            this.intern.push(this.newIntern);
+           this.newEmployee();
 
        });
 
@@ -253,18 +253,41 @@ class runApp {
     .then(answers => { 
         this.newEngineer = new Engineer(answers);
         this.engineer.push(this.newEngineer);
-        
+        this.newEmployee(); // ask user if they want to add another employee
     });
+} else {
 
-  }
- }
+     }
+}
 
-  addHtmlTemplate(cardManager, cardEngineer, cardIntern) {
+       newEmployee() {
+
+           inquirer
+           .prompt([
+        {
+    type: 'confirm',
+    name: 'newEmployee',
+    message: 'Would you like to add another employee?',
+    default: false
+      }
+   ])
+
+     .then(answer => {
+     if (answer.newEmployee) {
+     this.getEmployeeTitle();
+     } else {
+    // if no further employees, move to next step. Add templated html
+    this.newTemplate(this.manager, this.engineer, this.intern)
+}
+});
+}
+
+  newTemplate(cardManager, cardEngineer, cardIntern) {
 
     
-     const htmlgen = new htmlGen()
+     const getHtml = new htmlGen()
     
-     this.writeHtml(htmlgen.newHtml(cardManager, cardEngineer, cardIntern))
+     this.writeHtml(getHtml.newHtml(cardManager, cardEngineer, cardIntern))
  }
 
  writeHtml(htmlTemplate) {

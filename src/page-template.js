@@ -16,28 +16,25 @@ class htmlGen {
     
     <head>
       <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Portfolio Demo</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="./style.css">
      <title>Team Gen</title>
       </head>
     
-    <body>
-      <header>
-        <div class="container flex-row justify-space-between align-center py-3">
-          <h1 class="page-title text-secondary bg-dark py-2 px-3">New Team</h1>
-          <nav class="flex-row">
-          </nav>
-        </div>
-      </header>
+      <header class="header-bag">
+      <h1 class="align-self-center"> <i class="icon-coffee"></i> My Team</h1>
+  </header>
+  <div class="container">
+      <div class="row">
 
       <div class="col-sm">
       <div class="card">
           <div class="card-header">
-              <h3 class="card-title">${name}}</h3>
+              <h3 class="card-title">${name}</h3>
               <h3 class="card-title"> <i class="fas fa-mug-hot"></i> ${this.getManager(cardManager)}</h3>
           </div>
           <div class="card-body">
@@ -60,14 +57,14 @@ class htmlGen {
             <div class="col-sm">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">${name}}</h3>
-                    <h3 class="card-title"> <i class="fas fa-mug-hot"></i> ${this.getEngineer(cardEngineer)}</h3>
+                    <h3 class="card-title">${name}</h3>
+                    <h3 class="card-title"> <i class="fas fa-glasses"></i> ${this.getEngineer(cardEngineer)}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id}</li>
                     <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a> </li>
-                    <li class="list-group-item">Office Number: ${gitHub}</li>
+                    <li class="list-group-item">Github: <a href="https://github.com/${gitHub}/" target="_blank">GitHub</a> </li>
                     </ul>
                 </div>
             </div>
@@ -77,14 +74,14 @@ class htmlGen {
       .join('')}
    
      ${cardIntern
-          .filter(({ feature }) => feature)
+          .filter(({ name }) => name)
           .map(({ name, id, email, school }) => {
             return `
             <div class="col-sm">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">${name}}</h3>
-                    <h3 class="card-title"> <i class="fas fa-mug-hot"></i> ${this.getIntern(Intern)}</h3>
+                    <h3 class="card-title">${name}</h3>
+                    <h3 class="card-title"> <i class="fas fa-user-graduate"></i> ${this.getIntern(cardIntern)}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
@@ -101,6 +98,9 @@ class htmlGen {
       
       </div>
       </div>
+
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      
       </body>
 </html>
         `
@@ -122,7 +122,7 @@ class htmlGen {
 
 }
   
-  module.exports = new htmlGen()
+  module.exports = htmlGen
   
   
 
