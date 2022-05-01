@@ -2,15 +2,55 @@
 const Engineer = require('../lib/Engineer');
 
 test ('Employee Profile: Engineer', () => {
-    const employee = new Engineer ('employee', 'id', 'email', 'role', 'github');
+    const obj = {
+        name: 'Jacob',
+        id: 1234,
+        email:'jacob@gmail.com',
+        gitHub: 'JacobReeder'
+    }
 
-    expect(employee.name).toBe("employee");
-    expect(employee.id).toBe('id');
-    expect(employee.email).toBe('email');
-    expect(employee.role).toBe('role')
-    expect(employee.github).toBe('github')
+    const engineer = new Engineer (obj);
 
-})
+    expect(engineer.name).toEqual(expect.any(String));
+    expect(engineer.id).toEqual(expect.any(Number));
+    expect(engineer.email).toEqual(expect.any(String));
+    expect(engineer.gitHub).toEqual(expect.any(String));
+
+});
+
+
+
+
+test('Github link', () => {   /////passes
+    const obj = {
+        name: 'Jacob',
+        id: 1234,
+        email: 'jacob@gmail.com',
+        gitHub: 'JacobReeder'
+    }
+    const engineer = new Engineer (obj);
+
+    expect(engineer.getGitHub()).toEqual(expect.any(String));
+});
+
+test('creates a role', () => {   /////passes
+    const obj = {
+        name: 'Jacob',
+        id: 1234,
+        email: 'jacob@gmail.com',
+        gitHub: 'JacobReeder'
+    }
+    const engineer = new Engineer (obj);
+
+    expect(engineer.getRole()).toEqual(expect.any(String));
+
+});
+
+
+
+
+
+
 
 
 
