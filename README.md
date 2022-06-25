@@ -12,3 +12,6 @@ Application is invoked the from the command line by typing "node index". From th
 
 ## Links
 Click the following link to view application functionality - https://drive.google.com/file/d/1D9FQcurw2_nTIjn64RoUrH-zCfGsYHQ2/view
+
+## Screenshot
+<img width="1440" alt="Screen Shot 2022-06-24 at 7 10 00 PM" src="https://user-images.githubusercontent.com/97851357/175754375-551750af-7ee6-45b4-9564-9ebf800d9488.png">
